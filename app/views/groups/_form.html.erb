@@ -1,6 +1,6 @@
 
 <br>
-<%= form_with(model:group) do |form|%>
+<%= form_with model:group , url: groups_path do |form|%>
    <div>
      <%= form.text_field :name, placeholder: "Your name here..."%>
    </div><br>

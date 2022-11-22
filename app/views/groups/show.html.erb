@@ -5,11 +5,18 @@
 <div class="category_show_content d-flex">
    <img src= <%= @group.icon %> />
 <h4><% @group.spendings.each do |spend |%>
- <%= spend.amount %>
+<ul>
+<li>
+ <%= spend.name %>
+</li>
+<li> <%= spend.amount %> $</li>
+<li>
+<%= spend.created_at.to_date.strftime("%d %b, %Y") %>
+</li>
+</ul>
 <% end %></h4>
 </div>
 <br>
-<p>created at: <%= @group.created_at %></p>
 
 <%= button_to "Delete" , @group, method: :delete,  class:"btn btn-danger" %>
 
