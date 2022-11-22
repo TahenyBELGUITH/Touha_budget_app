@@ -1,0 +1,22 @@
+
+<br>
+<%= form_with(model:group) do |form|%>
+   <div>
+     <%= form.text_field :name, placeholder: "Your name here..."%>
+   </div><br>
+
+    <div>
+     <%= form.text_field :icon, placeholder: "Your image here..."%>
+   </div><br>
+
+
+   <div>
+     <%= form.submit class:"btn btn-warning" %>
+   </div><br>
+<% end %><hr>
+
+<br>
+<%= link_to "Back",groups_path, class:"btn btn-primary" %>
+<br><br>
+
+
