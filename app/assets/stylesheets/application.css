@@ -23,6 +23,7 @@ a {
   border-radius: 100%;
   width: 5rem;
   height: 5rem;
+  border: 2px solid #ffc107;
 }
 
 .category_show > img {
