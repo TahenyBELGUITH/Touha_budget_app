@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users 
   resources :groups do
-    resources :spendings, only: %i[show]
+    resources :spendings
   end
 
   resources :spendings

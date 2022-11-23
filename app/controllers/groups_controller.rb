@@ -2,10 +2,15 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = Group.all
+    return unless current_user
+
+    @user = current_user
+    @groups = @user.groups.includes(:spendings)
   end
 
-  def show; end
+  def show
+    @spendings = @group.spendings.order('created_at DESC')
+  end
 
   def new
     @group = Group.new
@@ -13,25 +18,11 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to group_path(@group), notice: 'Category was added successfully' }
-      else
-        render :new, status: :unprocessable_entity
-      end
-    end
-  end
+    @group.user_id = current_user.id
 
-  def edit; end
+    render :new unless @group.save
 
-  def update
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to group_path(@group), notice: 'Category was updated successfully' }
-      else
-        render :edit, status: :unprocessable_entity
-      end
-    end
+    redirect_to groups_path
   end
 
   def destroy
@@ -48,6 +39,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :icon, :user_id)
+    params.require(:group).permit(:name, :icon)
   end
 end
