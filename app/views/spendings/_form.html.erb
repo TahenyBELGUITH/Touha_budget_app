@@ -1,0 +1,30 @@
+
+<br>
+<%= form_with(model:spending) do |form|%>
+   <div>
+     <%= form.text_field :name, placeholder: "Your name here..."%>
+   </div><br>
+
+    <div>
+     <%= form.number_field :amount, placeholder: "Your amount here..."%>
+   </div><br>
+
+   <div>
+    <%= form.collection_select :group_id, Group.all, :id, :name, class:"form-select form-select-lg mb-3"%>
+   </div>
+<br>
+
+<div>
+  <%= form.hidden_field :user_id , value: current_user.id %>
+</div>
+
+
+
+   <div>
+     <%= form.submit class:"btn btn-warning" %>
+   </div><br>
+<% end %><hr>
+
+<br>
+<%= link_to "Back", groups_path, class:"btn btn-primary" %>
+<br><br>
