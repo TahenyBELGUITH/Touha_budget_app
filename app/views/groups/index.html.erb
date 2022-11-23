@@ -1,0 +1,17 @@
+<br><div class="container"  align="center">
+    <h2>All Categories</h2>
+
+<%= link_to "Create Category",new_group_path, class:"btn btn-warning" %>
+
+<% @groups.each do |group| %>
+<a href="/groups/<%= group.id %>" class = 'user-clickable'>
+
+<div class="category_show">
+ <h2><%= group.name%></h2>
+ <img src= <%= group.icon %> /><br>
+ <%= group.created_at %>
+ </div>
+</a>
+
+<% end %>
+</div>

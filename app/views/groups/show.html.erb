@@ -1,0 +1,23 @@
+<br><div class="container"  align="center">
+
+<div class="category_show">
+<h2><%= @group.name %></h2>
+<div class="category_show_content d-flex">
+   <img src= <%= @group.icon %> />
+<h4><% @group.spendings.each do |spend |%>
+   <%= spend.amount%>
+<% end %></h4>
+</div>
+<br>
+<p>created at: <%= @group.created_at %></p>
+
+<%= button_to "Delete" , @group, method: :delete,  class:"btn btn-danger" %>
+
+</div>
+<%= link_to "Back",groups_path, class:"btn btn-primary" %>
+<%= link_to "Create Category",new_group_path, class:"btn btn-warning" %>
+
+</div>
+
+
+
