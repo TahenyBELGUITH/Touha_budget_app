@@ -24,20 +24,23 @@
     <a class="navbar-brand" href="https://github.com/TahenyBELGUITH">TouHaX</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mt-4 mb-lg-0">
-        <li class="nav-item">
-          <h4><%= link_to "Categories", groups_path, class:"nav-link active", aria_current:"page"%></h4>
-        </li>
 
-        <li class="nav-item">
+         <li class="nav-item me-1">
+          <h4><%= link_to "Create Transaction", new_spending_path, class:" btn btn-warning text-white", aria_current:"page"%></h4>
+        </li><br>
+
+        <li class="nav-item me-1">
+          <h4><%= link_to "Categories", groups_path, class:"btn btn-warning text-white", aria_current:"page"%></h4>
+        </li>
+<br>
+
+        <li class="nav-item me-1">
           <h4><%= link_to "Create Category",new_group_path, class:"btn btn-warning text-white" %>
           </h4>
         </li><br>
 
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search Here..." aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit">Search</button>
-      </form><br>
+      <br>
       <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-danger"  %>
     </div>
     <% end %>  

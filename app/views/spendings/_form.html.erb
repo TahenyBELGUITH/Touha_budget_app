@@ -9,7 +9,7 @@
       <%= form.label :amount, 'Amount', class: "form-label" %>
     </div>
     <%= form.label :group_id, 'Please select a category:', class: "form-label" %>
-    <%= form.select :group_id, Group.order(:name).where(user:current_user).pluck(:name, :id), {}, {:multiple => true, required:true, :id => "groups", :class => "form-select mb-3" } %>
+    <%= form.select :group_id, Group.order(:name).where(author:current_user).pluck(:name, :id), {}, {:multiple => true, required:true, :id => "groups", :class => "form-select mb-3" } %>
     <%= form.submit 'Create transaction', class: "btn btn-warning text-white" %>
   <% end %>
 </div><br><br>
