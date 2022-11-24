@@ -7,7 +7,7 @@ class SpendingsController < ApplicationController
     @groups = params[:spending][:group_id].drop(1)
     @groups.each do |group|
       @spending = Spending.new(name: params[:spending][:name], amount: params[:spending][:amount],
-                               group_id: group.to_i, user_id: current_user.id)
+                               group_id: group.to_i, author_id: current_user.id)
       @spending.save
     end
     redirect_to group_path(@groups.first.to_i)

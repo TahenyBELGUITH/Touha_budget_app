@@ -2,10 +2,12 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    return unless current_user
+    # return unless current_user
 
-    @user = current_user
-    @groups = @user.groups.includes(:spendings)
+    # @author = current_user
+    # @groups = @author.groups.includes(:spendings)
+
+    @groups = Group.all
   end
 
   def show
@@ -18,11 +20,10 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.user_id = current_user.id
-
-    render :new unless @group.save
-
-    redirect_to groups_path
+    @group.author_id = current_user.id
+    # render :new unless @group.save
+    @group.save
+    redirect_to group_path(@group)
   end
 
   def destroy
